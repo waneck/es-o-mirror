@@ -1,0 +1,469 @@
+
+          ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+          ³  EPROM Programmer Menu Driven Control Software V1.10  ³
+          ³                                                       ³
+          ³             Documentation file - EPROM.DOC            ³
+          ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+                    Copyright (C) Paul Stenning 1992-1993
+
+
+INTRODUCTION
+~~~~~~~~~~~~
+This file contains the documentation for the EPROM Programmer Control
+Software, for use with the EPROM Programmer project published in the January
+and February 1993 issues of Electronics Today International.
+
+This documentation is kept short since much of the operation is apparent when
+operating the software.  This file may be printed using the PRINTDOC.BAT batch
+file on the distribution disk, however you may prefer to load it into a
+word-processor or text editor to add page formatting.
+
+Additional information is given in the context sensitive on-line help system,
+within the software.  To use this, simply press <F1> when a menu selection is
+highlighted.  The help files are in plain ASCII text and may be printed if
+required.
+
+
+
+DISCLAIMER
+~~~~~~~~~~
+This software is offered on an as-is-basis without any guarantee as to the
+correct functioning or fitness for specific purpose. The author believes this
+software to work as described, but you use the software entirely at your own
+risk. The author will not be responsible for any hardware or software damage,
+loss of data, or incidental or consequential damage that may result from its
+use, whether or not such use is in accordance with the instructions.
+
+If you are unable to accept the above disclaimer, please do not use this
+software.
+
+
+
+REGISTRATION
+~~~~~~~~~~~~
+Each copy of this software has a unique registration file called EPROM.REG
+which contains the name of the registered user and a checksum number.  The
+software will not start unless this file is present and the checksum is
+correct.  The name of the registered user is shown by selecting "About" from
+the "File" menu.  Any copies made can therefore be traced.  The author will
+retain a record of all registered users.  No attempt may be made to modify the
+software or registration file.
+
+You have purchased the right to use one copy of this software on one computer
+at any time.  The software may be used only by the registered user, and any
+other person with the registered user's knowledge and consent.  You may make
+copies as required for backup purposes, and the software may exist on more
+than one computer providing only one copy is being used at any time.  One copy
+of the software must be purchased for each EPROM Programmer.  Additional
+copies or a site licence can be supplied by the author at reasonable cost.
+
+This software is the result of many hours of effort and your support and
+co-operation is requested and appreciated.
+
+If you are unable to accept the above registration requirements, please do not
+use this software.
+
+
+
+WARRANTY AND UPDATES
+~~~~~~~~~~~~~~~~~~~~
+This software was produced on one computer and has been tried on three others.
+It cannot therefore be guaranteed to work on all machines and under all
+circumstances.  At the time it was written there was only one EPROM programmer
+so I have not been able to get any beta testing done.  Hopefully the software
+will work flawlessly, however if any bugs or problems are found they will be
+rectified as soon as possible.  I would be pleased to hear of any bugs found
+or problems encountered.
+
+If there is a significant update available, it will be announced on the
+letters page of Electronics Today International.  I am not able to notify
+people individually.  All updates will be free of charge, simply send me your
+ORIGINAL distribution disk and adequate return postage, and I will update your
+disk and return it to you as quickly as possible.  I will not send an update
+unless the original distribution disk is sent - if it has been damaged please
+send it and another new disk.
+
+
+
+ACKNOWLEDGEMENTS
+~~~~~~~~~~~~~~~~
+This software was programmed using Microsoft QuickBASIC version 4.5.
+
+Many routines in the software were taken from Christy Gemmell's Assembly
+Language Toolbox for QuickBASIC version 5.50.  This is a superb Shareware
+product, without which this software would not have been possible.  If any
+QuickBASIC programmers would like a copy please send me a formatted disk and
+adequate return postage and I will gladly supply one.  Please support
+Shareware by registering your copy if you find it useful.  The author lives in
+the U.K. and registration costs just œ25 inclusive.
+
+LIST.COM is a Shareware text file viewer (supplied on the distribution disk)
+which should also be registered if found useful.  The problems of registering
+American Shareware are appreciated but please make the effort.
+
+All trademarks used in this document and software are acknowledged.
+
+
+
+SYSTEM REQUIREMENTS
+~~~~~~~~~~~~~~~~~~~
+The minimum system requirement for this software is an IBM PC or compatible
+with 256K of RAM (at least 384K is required for DOS shell option to work), two
+360K floppy disk drives and one serial port.  I would be extremely surprised
+if anyone is using a machine with a lower specification than this!  A hard
+disk drive will improve performance, particularly if a caching program is
+being used.
+
+MS-DOS or PC-DOS version 3.1 or later is required.  I use Microsoft DOS 5.00
+which I can highly recommended - the upgrade can now be obtained for under œ50
+and is money well spent.
+
+
+
+HARD DISK INSTALLATION
+~~~~~~~~~~~~~~~~~~~~~~
+To simplify installation, a hard drive installation routine is provided on the
+disk.  To start, place the distribution disk in drive A or B, change to the
+hard drive which you want the software to be installed onto, then type:-
+
+         A:INSTALL <Enter>  or
+         B:INSTALL <Enter>
+
+The installation routine will copy the selected items to your specified
+directory on your hard drive after confirmation.  It will then will optionally
+modify your AUTOEXEC.BAT file, saving the original as AUTOEXEC.OLD.
+Alternatively a copy of the recommended AUTOEXEC.BAT file may be stored in the
+same directory as the software.
+
+
+
+FLOPPY DISK INSTALLATION
+~~~~~~~~~~~~~~~~~~~~~~~~
+Installation to a floppy disk is rather more difficult to automate, due to
+having to keep a copy of COMMAND.COM where the computer can find it.  I will
+give instructions of how to carry out a floppy disk installation with the aid
+of a simple batch file.  It is assumed that the software will be on a bootable
+disk in drive A and the hex data will be stored on a disk in drive B.
+
+Start computer with your usual DOS disk.  Place a blank disk in drive B and
+type:-
+
+         A:  <Enter>
+         FORMAT B: /S  <Enter>
+         COPY A:\COMMAND.COM  B:  <Enter>
+
+Place the new disk in drive A and this distribution disk in drive B.  Type:-
+
+         B:  <Enter>
+         FLOPINST  <Enter>
+
+The software is now installed on the disk in drive A, together with suitable
+AUTOEXEC.BAT and CONFIG.SYS files.  Do not write protect this disk as the
+configuration file EPROM.CFG will be stored there.  Place a blank formatted
+disk (for the hex data) in drive B and reboot computer.  The EPROM Programmer
+Control Software should start automatically.
+
+
+
+AUTOEXEC.BAT
+~~~~~~~~~~~~
+There are three changes which may be made to your AUTOEXEC.BAT file.  These
+are carried out automatically by the installation routines, and the purpose is
+described below.
+
+The drive and directory containing the EPROM.EXE file will be added to the end
+of the PATH statement, so the software can be run from anywhere on the hard
+drive.  The software would normally be started from the directory containing
+your hex data files, since these can only be loaded and saved in the current
+directory.
+
+The environment variable line SET EPROM=<path> will be added to tell the
+software where to find the EPROM.REG registration file and the EPROM.CFG
+configuration file.  If this variable is not set the software will look in the
+current directory only.
+
+The environment variable line SET HELP=<path> will be added to tell the
+software where to find the context sensitive on-line help files.  If this
+variable is not set the software will look for a \HELP subdirectory below the
+current directory.  If no files are found or the subdirectory does not exist
+the help will not be available.
+
+
+
+OPERATION
+~~~~~~~~~
+To start the software, change to the directory where your hex files are
+stored, and type:-
+
+         EPROM <Enter>
+
+The software will first try to establish communications with the EPROM
+Programmer through the serial port that was in use last time "Save Config" was
+selected.  If no configuration file EPROM.CFG is found, the highest serial
+port found on the computer will be used.
+
+If communication cannot be established, or is subsequently lost, select the
+serial port to be used from the "Serial-Port" menu and the software will
+attempt to re-establish the communications.  You will not be able to select a
+serial port unless it exists on your computer.
+
+The current serial port, together with the current file format and the device
+type and speed can be saved using the "Save Config" option in the "File" menu,
+and will then automatically be loaded the next time the software is started.
+
+I am not going to describe all the menu options individually here, since they
+are described in the context sensitive on-line help system.  Highlight the
+item you require more information about, then press <F1>.
+
+
+
+FILE FORMATS
+~~~~~~~~~~~~
+This software will load and save hex data in a number of industry standard
+formats.  A description of each is given below.  Some of this information is
+taken from the Stack S2000 EPROM Programmer User Manual.
+
+If you are short of disk space, files in most of these formats can be reduced
+in size quite drastically using file compression software such as PKZIP or
+LHARC.  They will, of course, need to be uncompressed again before loading
+into this software.
+
+
+ASCII Text
+~~~~~~~~~~
+0000  11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF
+0010  11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF
+
+Char No.      Description
+
+    1-4       Address Field:  Hex representation of address to load first data
+              byte, with following bytes being loaded into successive
+              locations.
+    5-6       Two or more 'space' characters.
+    7-50      Data Bytes:  16 data bytes, each represented by two hex
+              characters followed by one or more 'space' characters.
+    51-52     Carriage return, line feed.
+
+This format is unique to this software, and was designed to enable ease of 
+manual creation and editing, using a text editor or similar.
+
+
+Intel Hex
+~~~~~~~~~
+:10000000112233445566778899AABBCCDDEEFF00F8
+:050010001122334455EC
+:00000001FF
+
+Char No.      Description
+
+    1         Record Mark:  A 'colon' marks the beginning of a record.
+    2-3       Byte Count:  Hex representation of the number of data bytes in
+              the record.  A byte count of zero indicates an end-of-file
+              record.
+    4-7       Address Field:  Hex representation of address to load first data
+              byte, with following data bytes being loaded into successive
+              addresses.
+    8-9       Record Type:  All data records are type 00.  An end-of-file
+              record is 01.
+    10-N      Data Bytes:  Each data byte is represented by 2 hex characters.
+    N+1 - N+2 Checksum:  2 character hex checksum which is the 2's compliment
+              of the sum of all the bytes in the record except the colon and
+              the checksum, evaluated modulo 256.  The sum of all the bytes in
+              the record plus the checksum is zero.
+    N+3 - N+4 Carriage return, line feed.
+
+
+Motorola S Record
+~~~~~~~~~~~~~~~~~
+S1130000112233445566778899AABBCCDDEEFF00F4
+S2090100101122334455E6
+S9030000FC
+
+S1 Rec.  S2 Rec.  S9 Rec.
+Char No  Char No  Char No   Description
+
+1        1        1         Record Mark:  An 'S' marks the beginning of a
+                            record.
+2        2        2         Record Type:  Type 1 records and type 2 records
+                            are data records having 16 bit and 24 bit
+                            address fields respectively.  Type 9 records are
+                            end-of-file records.
+3-4      3-4      3-4       Record Length:  Hex representation of number of
+                            bytes in record from and excluding byte count, to
+                            and including checksum.
+5-8      5-10     5-8       Address Field:  Hex representation of address to
+                            load first data byte, with following data bytes
+                            being loaded into successive locations.
+9-N      11-N               Data Bytes:  Each data byte is represented by 2
+                            hex characters.
+N+1-N+2  N+1-N+2  9-10      Checksum:  A 2 character hex checksum which is
+                            the 1's compliment of the sum of all the bytes in
+                            the record except the record type and the
+                            checksum, evaluated modulo 256.
+N+3-N+4  N+3-N+4  11-12     Carriage return, line feed.
+
+S1, S2 and S9 records can be received by the programmer.  S1 and S9 records 
+are transmitted.
+
+
+RCA Cosmac
+~~~~~~~~~~
+!M
+0000 112233445566778899AABBCCDDEEFF00;
+0010 1122334455
+
+Char No.      Description
+
+    1-2       File Mark:  The '!M' characters mark the beginning of the file.
+    3-4       Carriage return, line feed.
+    5-8       Address Field:  Hex representation of address to load first data
+              byte, with following data bytes being loaded into successive
+              locations.
+    9         'Space' character.
+    10-N      Data Bytes:  Each data byte is represented by 2 hex characters.
+    N+1       End-of-record mark:  A ';' indicates another record follows,
+              with an expressed address.  A ',' indicates another record
+              follows, without an address.  No character indicates end-of-
+              file.
+    N+3 - N+4 Carriage return, line feed.
+
+
+Tektronix Hex
+~~~~~~~~~~~~~
+/00001001112233445566778899AABBCCDDEEFF00F0
+/0010050611223344551E
+/00000000
+
+Char No.      Description
+
+    1         Record Mark:  A '/' marks the beginning of a record.
+    2-5       Address Field:  Hex representation of address to load first data
+              byte, with following data bytes being loaded in to successive
+              locations.
+    6-7       Byte Count:  Hex representation of number of data bytes in
+              record.  A byte count of zero indicates an end-of-file record.
+    8-9       Checksum:  2 character hex checksum representing the sum of the
+              hex values of the 6 digits 2-7, evaluated modulo 256.
+    10-N      Data Bytes:  Each data byte is represented by 2 hex characters.
+    N+1 - N+2 Checksum:  A 2 character hex checksum representing the sum of
+              the hex values of the digits of the data bytes, evaluated modulo
+              256.
+    N+3 - N+4 Carriage return, line feed.
+
+
+ASCII Hex
+~~~~~~~~~
+<STX><SOH>$A0000,
+11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 00
+11 22 33 44 55 <ETX>
+$S08F7,
+
+Char No.      Description
+
+    1-2       File Mark:  Non-printable <STX> and <SOH> characters mark the
+              beginning of the file.
+    3-4       Address Mark:  The '$A' characters indicate that the start
+              address follows.
+    5-8       Address field:  Hex representation of address to load first data
+              byte, with following data bytes being loaded into successive
+              locations.
+    9         Data Mark:  A ',' character indicates beginning of data.
+    10-11     Carriage return, line feed.
+    12-N      Data Bytes:  Each byte is represented by 2 hex characters
+              followed by a 'space' character.  Carriage returns and line
+              feeds can be inserted between any space and the next data byte.
+    N+1       Termination Mark:  Non-printable <ETX> character after a space
+              marks the end of the data.
+    N+2 - N+3 Carriage return, line feed.
+    N+4 - N+5 Checksum Mark:  The '$S' characters indicate the checksum
+              follows.
+    N+6 - N+9 Checksum:  A 4 character checksum representing the sun of the
+              hex data bytes, evaluated modulo 256.
+    N+10      File Mark:  A ',' character indicates end-of-file.
+    N+11-N+12 Carriage return, line feed.
+
+There are three variations on this format, with the 'space' character being
+replaced by either a comma (,) character, an apostrophe (') character or a
+percent (%) character.  Any of these formats will be loaded successfully, but
+only the 'space' format will be saved.
+
+
+ASCII Binary
+~~~~~~~~~~~~
+<STX>B00010001F B00100010F B00110011F B01000100F
+B01010101F B01100110F B01110111F B10001000F
+B10011001F B10101010F B10111011F B11001100F <ETX>
+
+Char No.      Description
+
+    1         File Mark:  Non-printable <STX> character marks the beginning of
+              the file.
+    2-N       Data Bytes:  Each byte is represented by 10 characters.  A 'B'
+              character indicates the start of the data byte,  '1' and '0'
+              characters indicate the 8 bits of the data byte, and an 'F'
+              character indicates the end of a data byte.  'Space' characters
+              and carriage return, line feeds are inserted between data bytes
+              for clarity (optional when loading data).
+    N+1       File Mark:  Non-printable <ETX> character marks the end-of-file.
+
+There are two variations on this format, with the '1' and '0' characters being
+replaced with either 'H' and 'L', or 'P' and 'N'.  Any of these formats will
+be loaded successfully, but only the '1' and '0' format will be saved.
+
+
+Binary Image
+~~~~~~~~~~~~
+A Binary Image file contains the raw data.  Since this contains no real format
+or checksum it is not recommended.  However it is very economical on disk
+space.
+
+
+Three non-printable characters are mentioned in the above descriptions.  Their
+ASCII codes are:-
+                        <SOH>   01h
+                        <STX>   02h
+                        <ETX>   03h
+
+________________________________________________________________________________
+
+
+Version 1.10 Update Notes  -  02/03/93
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Two users have reported problems installing and using the software.  The 
+software makes system and BIOS calls to establish which drive it is running 
+from and started from, which DOS version is being used, and how many serial 
+ports are installed.  The routines for doing this are part of the Assembly 
+Language Toolbox, and appear not to work on all "compatible" machines and all 
+configurations.
+
+If error messages occur during the installation, re-start the installation
+routine with the command:-
+
+                             INSTALL /FIX <Enter>
+
+
+If error messages occur when running the software, or the number of serial
+ports shown is incorrect, restart the software with the command:-
+
+                             EPROM /FIX <Enter>
+
+Once ths software is running select "Save Configuration" from the "File" menu.
+This will save the /FIX option along with the other items, so the software can
+then be started as usual.
+
+________________________________________________________________________________
+
+
+AUTHOR'S NAME AND ADDRESS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+    Paul Stenning,
+    PO Box 15,
+    Hereford,
+    HR4 9WX.
+
+Please enclose your distribution disk or a printed copy of your EPROM.REG
+file, together with an SAE, with any enquiry.  Thank you.
+
+

@@ -1,0 +1,161 @@
+- Detalhes sobre o Intel Itanium
+
+
+Por Carlos E. Morimoto
+
+
+Durante anos, muito se ouviu dizer a respeito do Intel Merced. Já
+houveram até muitas previsões de lançamento, mas sempre foram mais
+boatos que verdades. Depois de mudar até o nome do projeto, finalmente o
+Itanium foi lançado, com cerca de 3 anos de atraso, em março de 2001. 
+
+Pelo menos inicialmente, o Itanium não se destina ao mercado doméstico,
+mas sim ao mercado de servidores, onde concorre principalmente com os
+processadores RISC atualmente disponíveis.
+
+O Itanium representa o primeiro processador de 64 bits lançado pela
+Intel, que utiliza um novo conjunto de instruções, o IA-64, que é
+incompatível com o atual, o que permitiu à Intel eliminar toda a carga
+de legado que acompanha seus processadores desde o 8088. 
+
+Para manter o Itanium compatível com os aplicativos de 32 bits, que
+afinal ainda são a esmagadora maioria, a Intel incluiu um sistema de
+emulação via hardware, quer permite que o Itanium rode aplicativos de
+legado, mas com um desempenho bastante fraco. Este é apenas um último
+recurso, o Itanium é uma boa opção apenas para servidores e outras áreas
+onde seja possível rodar apenas aplicativos de 64 bits. 
+
+Atualmente já existem versões de 64 bits do Linux e do Windows, mas não
+estão disponíveis muitos aplicativos. Isso acaba limitando o campo do
+Itanium aos ambientes onde é possível recompilar os programas para rodar
+em uma nova arquitetura. Este é o caso de muitos aplicativos
+científicos, que são muitas vezes desenvolvidos nos próprios
+laboratórios que os utilizam, mas não é o caso da maioria dos programas
+comerciais. 
+
+
+A arquitetura 
+
+
+A arquitetura do Itanium é bem diferente da do Pentium 4. Ao invés de
+ser projetado com altas frequências de operação em mente, o Itanium
+segue uma outra idéia, a de produzir um processador capaz de executar
+muitas operações por ciclo, que possa apresentar um bom desempenho mesmo
+operando à frequências mais baixas. 
+
+Esta diferença de filosofia pode ser justificada pelos mercados a que os
+dois processadores se destinam. No mercado doméstico a maioria dos
+compradores não se informa sobre a arquitetura dos processadores ou
+mesmo seu desempenho em cada tipo de aplicação, por isso acabam
+simplesmente comprando o processador de clock mais alto. No mercado de
+servidores, temos uma platéia muito mais seleta, composta por técnicos
+que estão interessados apenas no desempenho do processador. Não
+interessa se ele opera a 200 MHz ou 2.0 GHz, desde que o desempenho nos
+aplicativos utilizados por eles seja bom. 
+
+As primeiras versões do Itanium, lançadas em março de 2001, operam a
+apenas 733 e 800 MHz, apesar de mesmo a estas frequências serem capazes
+de superar as primeiras versões do Pentium 4 em benchmarks que simulam
+aplicações de servidores, como o SPEC CFP2000.
+
+O Itanium é capaz de processar entre 8 a 20 instruções por ciclo,
+dependendo do tipo de instruções utilizadas pelo aplicativo. O Pentium 4
+é capaz de executar apenas de 3 a 8 instruções por ciclo, muito menos,
+enquanto o Athlon mantém entre 6 e 9 instruções. 
+
+Isso mostra que ao comparar um Itanium de 800 MHz, um Athlon de 1.3 GHz
+e um Pentium 4 de 1.8 GHz, estamos falando de processadores mais ou
+menos do mesmo nível.
+
+Além do grande número de instruções por ciclo, o Itanium tem uma
+arquitetura de cache bastante agressiva, com um cache L1 bastante
+rápido, mas de apenas 32 KB (dividido em dois blocos, para dados e
+instruções) um cache L2 também muito rápido, de apenas 96 KB, mas em 
+compensação um cache L3 de 2 a 4 MB, dependendo da versão. Esta
+combinação permite que o processador disponha de um grande número de
+dados, armazenados no enorme cache L3, ao mesmo tempo que é capaz de
+acessa-los a uma grande velocidade, graças à combinação do cache L1 e
+L2.
+
+Segundo uma matéria do EEtimes.com, divulgada na época do lançamento do
+Pentium 4, a idéia original dos projetistas da Intel era implantar um
+sistema semelhante no Pentium 4. No final das contas acabaram
+desistindo, pois encareceria muito o processador. 
+
+O Itanium utiliza um encaixe bastante incomum, combinação de um soquete
+e um segundo conector em forma de slot. Na hora de instalar o
+processador, ele é encaixado primeiro no slot e depois ?baixado? de
+forma a encaixar no soquete. O Itanium dissipa bastante calor, por isso
+costumam ser usados coolers realmente grandes. 
+
+O cache L3 opera na mesma frequência do processador, mas é formado por
+dois módulos separados, que são instalados próximo ao núcleo do
+processador. Este é o principal motivo da Intel utilizar este
+encapsulamento caro, ao invés de simplesmente fazer um processador em
+formato de soquete, como o Pentium 4. 
+
+
+Confira mais alguns dos recursos do Itanium:
+
+
+Arquitetura EPIC: Abreviação de ?Explicitly Parallel Instruction
+Computing?, consiste em uma nova arquitetura, nem RISC, nem CISC, onde o
+processador é capaz de processar várias instruções simultaneamente. 
+
+Os processadores atuais, possuem várias unidades de execução, que
+trabalham paralelamente. Porém, os programas não são otimizados para
+este recurso, pelo contrário, enviam uma instrução de cada vez. O
+decodificador de instruções e a unidade de controle, têm então a tarefa
+de ordenar as instruções, de modo que todas as unidades de execução
+permaneçam ocupadas durante a maior parte do tempo. 
+
+Um processador EPIC já trabalha de forma diferente. Ao invés de várias
+unidades de execução separadas, temos uma única unidade de execução,
+capaz de processar várias instruções simultaneamente.
+
+Neste caso, temos possibilidade de obter um desempenho bastante
+superior, mas ao mesmo tempo, existe a necessidade dos softwares serem
+otimizados para a nova arquitetura. A arquitetura EPIC é muito
+semelhante à arquitetura WLIN utilizada no Transmeta Crusoé e em outros
+processador, mas a Intel optou por mudar o nome, com o objetivo de
+diferenciar o seu produto. 
+
+Processador de 64 bits: O fato do Itanium ser um processador de 64 bits,
+traz como vantagens a possibilidade de manipular 8 bytes de dados de
+cada vez, o que permite a execução de instruções mais complexas e
+poderosas em um único ciclo de clock e a possibilidade de acessar muito
+mais memória. Os processadores de 32 bits que temos atualmente, são
+capazes de acessar 2³² bits de memória, o que corresponde a 4 Gigabytes.
+Muita gente já utiliza 256 ou mesmo 512 MB de memória RAM e, em
+servidores de rede, esta quantidade pode saltar facilmente para 2
+Gigabytes ou mais. Como vê, os 4 Gigabytes de memória estão próximos de
+tornarem-se uma limitação.  
+
+Por ser um processador de 64 bits, o Itanium será capaz de acessar  bits
+de memória, o que corresponde a cerca de 2 milhões de Terabytes de
+memória RAM.
+
+Registradores: Dentro do processador, temos várias pequenas área de
+memória ultra rápida, que armazenam os dados e instruções que estão
+sendo processados. Os dados são transferidos do cache para os
+registradores e em seguida processados. Quanto mais registradores,
+melhor será o desempenho do processador.
+
+O Itanium tem um total de 384 registradores, sendo 128 para uso geral,
+128 para cálculos de ponto flutuante e mais 128 para o recurso de
+execução especulativa.
+
+Distribuição do sinal de clock: Internamente, um microprocessador é
+formado por vários subcomponentes e o sinal de clock, recebido da placa
+mãe é quem faz todos trabalharem sincronizadamente. Este é um dos
+motivos pelo qual um microprocessador deve ser pequeno. Como o sinal de
+clock é um sinal elétrico, ele demora um certo tempo para percorrer todo
+o processador. A princípio, este tempo pode parecer muito pequeno, mas
+quanto falamos em bilhões de ciclos por segundo, como nos processadores
+atuais, qualquer fração de tempo faz diferença.
+
+O Itanium é o maior processador (em termos de espaço físico) já
+produzido pela Intel. Para minimizar o retardo causado pela distância
+física a ser percorrida pelo sinal de clock, o Itanium possui vários nós
+de distribuição, uma espécie de atalho, que faz o sinal atingir as áreas
+mais remotas do processador mais rapidamente.

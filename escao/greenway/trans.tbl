@@ -1,0 +1,13 @@
+F EPROM.TXT                             	EPROM.TXT
+D HEX                                   	HEX
+D back_up                               	back_up
+F bit_field                             	bit_field
+F bit_field.c                           	bit_field.c
+F bits                                  	bits
+F bits.c                                	bits.c
+F memmap                                	memmap
+F memmap.c                              	memmap.c
+F old.tgz                               	old.tgz
+F simull                                	simull
+F simull.c                              	simull.c
+F teste.hex                             	teste.hex
