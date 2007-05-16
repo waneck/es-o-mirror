@@ -1,0 +1,2 @@
+O simull vai precisar de 2 arquivos, um com o conteudo da 
+memoria e outro com a definicao da maquina escao.
